@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { Navbar } from "../../components";
+import { Navbar, Todo } from "../../components";
 import { boxStyle, boxXontainerStyle, btnStyle, divStyle } from "./listTodo";
 const TodoList = () => {
   return (
@@ -20,7 +20,7 @@ const TodoList = () => {
                     disableElevation
                     sx={btnStyle}
                   >
-                    افزودن
+                    جستجو
                   </Button>
                 ),
               }}
@@ -28,6 +28,7 @@ const TodoList = () => {
           </div>
         </Box>
       </Box>
+      <Todo />
     </>
   );
 };

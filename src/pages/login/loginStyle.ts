@@ -21,7 +21,7 @@ const inputAdornmentStyle = {
     cursor: "default",
   },
 };
-const avatarStyle: CSSProperties = { backgroundColor: "#1bbd7e" };
+const avatarStyle: CSSProperties = { backgroundImage: " linear-gradient(to bottom right, blue, white,red)" };
 const gridContainerStyle: CSSProperties = { direction: "rtl" };
 
 const btnStyle: CSSProperties = { margin: "20px 0" };

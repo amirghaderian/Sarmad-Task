@@ -22,10 +22,11 @@ import { ChangeEvent, useState } from "react";
 
 const Login = () => {
   const [secure, setSecure] = useState(true);
-  const [user, setUser] = useState({ userName: "admin", password: "1232" });
+  const [user, setUser] = useState({ userName: "", password: "" });
   const notifyError = (proccess: string) => toast.error(proccess);
   const notifySuccess = (proccess: string) => toast.success(proccess);
 
+  console.log(user);
   const handleEye = () => {
     setSecure(!secure);
   };
@@ -43,6 +44,7 @@ const Login = () => {
         location.reload();
       }, 2000);
     } else {
+      setUser({ userName: "", password: "" });
       notifyError("نام کاربری یا رمز عبور درست نمی باشد.");
     }
   };
@@ -56,6 +58,7 @@ const Login = () => {
         <Grid container style={gridContainerStyle}>
           <TextField
             onChange={handleTextFieldUserName}
+            value={user.userName}
             label="نام کاربری"
             placeholder="نام کاربری خود را وارد کنید"
             variant="outlined"
@@ -64,6 +67,7 @@ const Login = () => {
           />
           <TextField
             onChange={handleTextFieldPassword}
+            value={user.password}
             InputProps={{
               endAdornment: (
                 <InputAdornment
