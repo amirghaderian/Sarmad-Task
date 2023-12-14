@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { TodoCard } from "..";
 import { boxContainerStyle, boxItemStyle } from "./todoStyle";
+import TodoParams from "./todo.type";
 
 const Todo = () => {
-  const [todoList, setTodoList] = useState<{}[]>([]);
+  const [todoList, setTodoList] = useState<TodoParams[]>([]);
   const fetchData = async () => {
     await api
       .get("products")
@@ -22,12 +23,10 @@ const Todo = () => {
   }, []);
 
   return (
-    <Box
-      sx={boxContainerStyle}
-    >
-      <Box  sx={boxItemStyle}>
+    <Box sx={boxContainerStyle}>
+      <Box sx={boxItemStyle}>
         {todoList.map((todo) => {
-          return <TodoCard todo={todo} key={todo.id}  />;
+          return <TodoCard todo={todo} key={todo.id} />;
         })}
       </Box>
     </Box>

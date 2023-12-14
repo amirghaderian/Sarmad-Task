@@ -1,4 +1,4 @@
-interface TodoParams {
+interface TodoCardParams {
   todo: {
     category: string;
     description: string;
@@ -9,4 +9,4 @@ interface TodoParams {
     title: string;
   };
 }
-export default TodoParams;
+export default TodoCardParams;
