@@ -8,33 +8,23 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
+import {
+  paperStyle,
+  gridSyle,
+  avatarStyle,
+  btnstyle,
+  inputAdornmentStyle,
+  textFildeStyle,
+  gridContainerStyle,
+} from "./loginStyle";
 const Login = () => {
   const [secure, setSecure] = useState(true);
-  const paperStyle = {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    padding: 5,
-    height: "50vh",
-    width: 280,
-    margin: "100px auto",
-  };
-  const gridSyle = {
-    display: "flex",
-    gap: "5px",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-
   const handleEye = () => {
     setSecure(!secure);
   };
   const handleSubmit = () => {
     console.log("object");
   };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
-  const btnstyle = { margin: "20px 0" };
   return (
     <Grid>
       <Paper elevation={15} sx={paperStyle}>
@@ -42,8 +32,7 @@ const Login = () => {
           <Avatar style={avatarStyle}></Avatar>
           <h2>ورود به سیستم</h2>
         </Grid>
-        <div style={{ direction: "rtl" }}>
-          {" "}
+        <Grid container style={gridContainerStyle}>
           <TextField
             label="نام کاربری"
             placeholder="نام کاربری خود را وارد کنید"
@@ -55,11 +44,7 @@ const Login = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment
-                  sx={{
-                    "&:hover": {
-                      cursor: "default",
-                    },
-                  }}
+                  sx={inputAdornmentStyle}
                   onClick={handleEye}
                   position="end"
                 >
@@ -67,9 +52,7 @@ const Login = () => {
                 </InputAdornment>
               ),
             }}
-            sx={{
-              mt: 2,
-            }}
+            sx={textFildeStyle}
             label="رمزعبور"
             placeholder="رمز عبور خود را وارد کنید"
             type={secure ? "password" : "text"}
@@ -77,7 +60,7 @@ const Login = () => {
             fullWidth
             required
           />
-        </div>
+        </Grid>
 
         <Button
           onClick={handleSubmit}

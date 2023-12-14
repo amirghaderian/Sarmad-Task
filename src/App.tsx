@@ -1,6 +1,5 @@
 import { useEffect, useState, Suspense } from "react";
-import TodoList from "./pages/TodoList";
-import Login from "./pages/login/Login";
+import { Login, TodoList } from "./pages";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -9,7 +8,7 @@ const App = () => {
   const [user, setUser] = useState<string>("");
   const cacheRtl = createCache({
     key: "muirtl",
-    stylisPlugins: [ rtlPlugin],
+    stylisPlugins: [rtlPlugin],
   });
   useEffect(() => {
     // setUser(`{"username":"admin","password":"123"}`);
