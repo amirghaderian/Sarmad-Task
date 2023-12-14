@@ -6,24 +6,45 @@ import {
   Button,
   InputAdornment,
 } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
 import {
   paperStyle,
   gridSyle,
   avatarStyle,
-  btnstyle,
+  btnStyle,
   inputAdornmentStyle,
   textFildeStyle,
   gridContainerStyle,
+  toastContainerStyle,
 } from "./loginStyle";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { ToastContainer, toast } from "react-toastify";
+import { ChangeEvent, useState } from "react";
+
 const Login = () => {
   const [secure, setSecure] = useState(true);
+  const [user, setUser] = useState({ userName: "admin", password: "1232" });
+  const notifyError = (proccess: string) => toast.error(proccess);
+  const notifySuccess = (proccess: string) => toast.success(proccess);
+
   const handleEye = () => {
     setSecure(!secure);
   };
+  const handleTextFieldUserName = (e: ChangeEvent<HTMLInputElement>) => {
+    setUser({ userName: e.target.value, password: user.password });
+  };
+  const handleTextFieldPassword = (e: ChangeEvent<HTMLInputElement>) => {
+    setUser({ userName: user.userName, password: e.target.value });
+  };
   const handleSubmit = () => {
-    console.log("object");
+    if (user.userName.trim() == "admin" && user.password.trim() == "123") {
+      notifySuccess("ورود با موفقيت");
+      localStorage.setItem("token", JSON.stringify(user));
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    } else {
+      notifyError("نام کاربری یا رمز عبور درست نمی باشد.");
+    }
   };
   return (
     <Grid>
@@ -34,6 +55,7 @@ const Login = () => {
         </Grid>
         <Grid container style={gridContainerStyle}>
           <TextField
+            onChange={handleTextFieldUserName}
             label="نام کاربری"
             placeholder="نام کاربری خود را وارد کنید"
             variant="outlined"
@@ -41,6 +63,7 @@ const Login = () => {
             required
           />
           <TextField
+            onChange={handleTextFieldPassword}
             InputProps={{
               endAdornment: (
                 <InputAdornment
@@ -67,12 +90,22 @@ const Login = () => {
           type="submit"
           color="primary"
           variant="contained"
-          style={btnstyle}
+          style={btnStyle}
           fullWidth
         >
           ورود
         </Button>
       </Paper>
+      <ToastContainer
+        style={toastContainerStyle}
+        position="bottom-right"
+        autoClose={3000}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Grid>
   );
 };

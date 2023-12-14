@@ -24,16 +24,21 @@ const inputAdornmentStyle = {
 const avatarStyle: CSSProperties = { backgroundColor: "#1bbd7e" };
 const gridContainerStyle: CSSProperties = { direction: "rtl" };
 
-const btnstyle: CSSProperties = { margin: "20px 0" };
+const btnStyle: CSSProperties = { margin: "20px 0" };
 const textFildeStyle: CSSProperties = {
   marginTop: 2,
+};
+const toastContainerStyle: CSSProperties = {
+  backgroundColor: "#eaeaea",
+  padding: "0",
 };
 export {
   paperStyle,
   gridSyle,
   avatarStyle,
-  btnstyle,
+  btnStyle,
   inputAdornmentStyle,
   textFildeStyle,
   gridContainerStyle,
+  toastContainerStyle,
 };
