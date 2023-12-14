@@ -12,6 +12,19 @@ import {
   Nightlight,
   LightMode,
 } from "@mui/icons-material";
+import {
+  appbarStyle,
+  avatarModeStyle,
+  avatarStyle,
+  iconButtonStyle,
+  logoutStyle,
+  modeStyle,
+  productIconStyle,
+  spanStyle,
+  toolbarStyle,
+  typoAvatarStyle,
+  typoProductStyle,
+} from "./navbarStyle";
 import { useState } from "react";
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -25,17 +38,9 @@ const Navbar = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, borderRadius: "30px" }}>
-      <AppBar
-        position="static"
-        sx={{
-          flexGrow: 1,
-          borderRadius: 3,
-          backgroundColor: "white",
-          color: "#11181C",
-        }}
-      >
-        <Toolbar sx={{ gap: 4 }}>
+    <Box>
+      <AppBar position="static" sx={appbarStyle}>
+        <Toolbar sx={toolbarStyle}>
           <IconButton
             onClick={handleLogout}
             size="large"
@@ -43,45 +48,29 @@ const Navbar = () => {
             color="inherit"
             aria-label="menu"
             disableRipple
-            sx={{ mr: 2 }}
+            sx={iconButtonStyle}
           >
-            <Logout sx={{ color: "#687076" }} />
+            <Logout sx={logoutStyle} />
           </IconButton>
 
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              flexGrow: 1,
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-            }}
-          >
+          <Typography variant="h6" component="div" sx={typoAvatarStyle}>
             <span>ادمين</span>
             <Typography variant="h6" component="div">
-              <Avatar
-                sx={{
-                  backgroundImage:
-                    "linear-gradient(to right, #0072F5 , #985CDD)",
-                }}
-              >
-                A
-              </Avatar>
+              <Avatar sx={avatarStyle}>A</Avatar>
             </Typography>
             <Typography variant="h6" component="div" onClick={handleMode}>
-              <Avatar sx={{ bgcolor: "#F0F0F0", mr: 1.5, borderRadius: "30%" }}>
+              <Avatar sx={avatarModeStyle}>
                 {darkMode ? (
-                  <LightMode  sx={{ color: "#00254D" }} />
+                  <LightMode sx={modeStyle} />
                 ) : (
-                  <Nightlight sx={{ color: "#00254D" }} />
+                  <Nightlight sx={modeStyle} />
                 )}
               </Avatar>
             </Typography>
           </Typography>
-          <Typography sx={{ display: "flex", gap: 0.2 }}>
-            <span style={{ color: "#11181C" }}>محصولات</span>
-            <Product  sx={{color:"#1976D2"}}/>
+          <Typography sx={typoProductStyle}>
+            <span style={spanStyle}>محصولات</span>
+            <Product sx={productIconStyle} />
           </Typography>
         </Toolbar>
       </AppBar>

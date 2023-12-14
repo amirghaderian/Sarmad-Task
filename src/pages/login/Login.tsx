@@ -81,6 +81,7 @@ const Login = () => {
             type={secure ? "password" : "text"}
             variant="outlined"
             fullWidth
+            aria-errormessage="رمز عبور الزامي است"
             required
           />
         </Grid>
