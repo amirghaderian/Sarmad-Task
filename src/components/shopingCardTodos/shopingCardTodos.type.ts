@@ -8,6 +8,7 @@ interface TodoCardParams {
     rating: { count: number; rate: number };
     title: string;
   };
-  onAddProduct: any;
+  setMyProduct: any;
+  myProduct: [];
 }
 export default TodoCardParams;

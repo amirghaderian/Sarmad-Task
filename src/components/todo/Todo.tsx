@@ -1,23 +1,29 @@
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { TodoCard } from "..";
 import { boxContainerStyle, boxItemStyle } from "./todoStyle";
 import TodoParams from "./todo.type";
 
-const Todo = () => {
-  const [todoList, setTodoList] = useState<TodoParams[]>([]);
+const Todo = ({ onAddTodo, onAddProduct }) => {
+  const [todoList, setTodoList] = useState([]);
+  const [myProductList, setMyProductList] = useState([]);
+
   const fetchData = async () => {
-    await api
-      .get("products")
-      .then((res) => {
-        const sliced = res.data.slice(0);
-        setTodoList(sliced);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    try {
+      const res = await api.get("products");
+      setTodoList(res.data);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
+ localStorage.setItem("products",JSON.stringify(myProductList) )
+  const handleAddProduct =  (product) => {
+    setMyProductList((pre)=>[...pre,product])
+   
+    
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,12 +31,17 @@ const Todo = () => {
   return (
     <Box sx={boxContainerStyle}>
       <Box sx={boxItemStyle}>
-        {todoList.map((todo) => {
-          return <TodoCard todo={todo} key={todo.id} />;
-        })}
+        {todoList.map((todo) => (
+          <TodoCard
+            onAddProduct={handleAddProduct}
+            myProductList={myProductList}
+            setMyProductList={setMyProductList}
+            todo={todo}
+            key={todo.id}
+          />
+        ))}
       </Box>
     </Box>
   );
 };
-
 export default Todo;

@@ -1,11 +1,13 @@
+import { CSSProperties } from "react";
+
 const boxContainerStyle = {
   bgcolor: "#f0f0f0",
   display: "flex",
   justifyContent: "center",
-  width: "84%",
+  width:"95%",
   mx: "auto",
   mt: 3,
 };
-const boxItemStyle = { display: "flex", flexWrap: "wrap" };
+const boxItemStyle: CSSProperties = { display: "flex", flexWrap: "wrap",justifyContent:"center" };
 
-export {boxContainerStyle,boxItemStyle}
+export { boxContainerStyle, boxItemStyle };

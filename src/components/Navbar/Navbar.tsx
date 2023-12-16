@@ -26,9 +26,16 @@ import {
   typoProductStyle,
 } from "./navbarStyle";
 import { useState } from "react";
-const Navbar = () => {
+import { CustomeDialogs } from "..";
+const Navbar = ({
+  TodoList,
+  setTodoList,
+  onAddProduct,
+  products,
+  setProducts,
+}) => {
   const [darkMode, setDarkMode] = useState(false);
-
+  const [dialog, setDialog] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("token");
     location.reload();
@@ -36,10 +43,13 @@ const Navbar = () => {
   const handleMode = () => {
     setDarkMode(!darkMode);
   };
+  const handleProducts = () => {
+    setDialog(!dialog);
+  };
 
   return (
     <Box>
-      <AppBar position="static" sx={appbarStyle}>
+      <AppBar position="static" sx={appbarStyle} >
         <Toolbar sx={toolbarStyle}>
           <IconButton
             onClick={handleLogout}
@@ -68,9 +78,20 @@ const Navbar = () => {
               </Avatar>
             </Typography>
           </Typography>
-          <Typography sx={typoProductStyle}>
-            <span style={spanStyle}>محصولات</span>
-            <Product sx={productIconStyle} />
+          <Typography
+            onClick={handleProducts}
+            sx={typoProductStyle}
+            variant="button"
+          >
+            <CustomeDialogs
+              TodoList={TodoList}
+              setTodoList={setTodoList}
+              products={products}
+              setProducts={setProducts}
+            >
+              <span style={spanStyle}>سبد من</span>
+              <Product sx={productIconStyle} />
+            </CustomeDialogs>
           </Typography>
         </Toolbar>
       </AppBar>

@@ -4,23 +4,20 @@ import {
   boxActionStyle,
   boxMediaStyle,
   btnAddStyle,
-  btnShowStyle,
   cardActionsStyle,
   cardMedoaStyle,
   cardStyle,
   toastContainerStyle,
-} from "./todoCardStyle";
-import TodoCardParams from "./todoCard.type";
+} from "./shopingCardTodosStyle";
+import TodoCardParams from "./shopingCardTodos.type";
 import { ToastContainer, toast } from "react-toastify";
 
-const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCardParams) => {
-  const notifySuccess = (proccess: string) => toast.success(proccess);
-  const handleAddProduct = () => {
-    notifySuccess("با موفقیت به سبدتان افزوده شد");
-    const newProduct= onAddProduct(todo);
-    setMyProductList((prev)=>[...prev,newProduct])
-
-  };
+const ShopingCardTodos = ({
+  todo,
+  setMyProduct,
+  myProduct,
+  onDelete,
+}: TodoCardParams) => {
   return (
     <Card sx={cardStyle}>
       <Badge
@@ -48,18 +45,10 @@ const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCard
             variant="contained"
             disableElevation
             disableRipple
-            onClick={()=>onAddProduct(todo)}
+            onClick={() => onDelete(todo.id)}
             sx={btnAddStyle}
           >
-            افزودن
-          </Button>
-          <Button
-            variant="contained"
-            disableElevation
-            disableRipple
-            sx={btnShowStyle}
-          >
-            نمايش كامل
+            حذف
           </Button>
         </CardActions>
       </Box>
@@ -76,4 +65,4 @@ const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCard
     </Card>
   );
 };
-export default TodoCard;
+export default ShopingCardTodos;

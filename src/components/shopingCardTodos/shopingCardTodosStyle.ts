@@ -15,11 +15,10 @@ const boxActionStyle = { mb: 8 };
 const cardMedoaStyle = { height: "70%" };
 const cardActionsStyle = { display: "flex", justifyContent: "space-between" };
 const btnAddStyle = {
-  px:"0",
-  bgcolor: "#FFD814",
-  color: "#0F1111",
+  bgcolor: "#F59794",
+  color: "#FFFFFF",
   "&:hover": {
-    backgroundColor: "#F0B800",
+    backgroundColor: "#F2314E",
   },
 };
 const btnShowStyle = {
