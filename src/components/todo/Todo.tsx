@@ -4,7 +4,7 @@ import { api } from "../../services/api";
 import { TodoCard } from "..";
 import { boxContainerStyle, boxItemStyle } from "./todoStyle";
 import { toast } from "react-toastify";
-
+import TodoParams from "./todo.type";
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
   const [myProductList, setMyProductList] = useState([]);
@@ -16,14 +16,15 @@ const Todo = () => {
     try {
       const res = await api.get("products");
       setTodoList(res.data);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
-  const handleAddProduct = (product) => {
+  const handleAddProduct = (product: TodoParams) => {
     notifySuccess("با موفقیت به سبدتان افزوده شد");
-    const filter = JSON.parse(localStorage.getItem("filterData"));
-    if (filter) {
+    const filterData = localStorage.getItem("filterData");
+    const filter = filterData ? JSON.parse(filterData) : [];
+    if (filterData) {
       setMyProductList(filter);
       localStorage.removeItem("filterData");
     }
@@ -37,13 +38,13 @@ const Todo = () => {
   return (
     <Box sx={boxContainerStyle}>
       <Box sx={boxItemStyle}>
-        {todoList.map((todo) => (
+        {todoList.map((todo: TodoParams) => (
           <TodoCard
             onAddProduct={handleAddProduct}
             myProductList={myProductList}
-            setMyProductList={setMyProductList}
             todo={todo}
             key={todo.id}
+            onDelete={undefined}
           />
         ))}
       </Box>

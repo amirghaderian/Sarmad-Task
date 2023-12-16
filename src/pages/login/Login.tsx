@@ -26,7 +26,6 @@ const Login = () => {
   const notifyError = (proccess: string) => toast.error(proccess);
   const notifySuccess = (proccess: string) => toast.success(proccess);
 
-  console.log(user);
   const handleEye = () => {
     setSecure(!secure);
   };

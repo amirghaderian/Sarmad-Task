@@ -9,15 +9,13 @@ import {
   cardStyle,
   toastContainerStyle,
 } from "./shopingCardTodosStyle";
-import TodoCardParams from "./shopingCardTodos.type";
-import { ToastContainer, toast } from "react-toastify";
+import ShopingCardParams from "./shopingCardTodos.type";
+import { ToastContainer } from "react-toastify";
 
 const ShopingCardTodos = ({
   todo,
-  setMyProduct,
-  myProduct,
   onDelete,
-}: TodoCardParams) => {
+}: ShopingCardParams) => {
   return (
     <Card sx={cardStyle}>
       <Badge

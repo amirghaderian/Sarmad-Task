@@ -27,13 +27,7 @@ import {
 } from "./navbarStyle";
 import { useState } from "react";
 import { CustomeDialogs } from "..";
-const Navbar = ({
-  TodoList,
-  setTodoList,
-  onAddProduct,
-  products,
-  setProducts,
-}) => {
+const Navbar = ({ TodoList, setTodoList, products, setProducts }: any) => {
   const [darkMode, setDarkMode] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -45,7 +39,7 @@ const Navbar = ({
 
   return (
     <Box>
-      <AppBar position="static" sx={appbarStyle} >
+      <AppBar position="static" sx={appbarStyle}>
         <Toolbar sx={toolbarStyle}>
           <IconButton
             onClick={handleLogout}
@@ -74,11 +68,7 @@ const Navbar = ({
               </Avatar>
             </Typography>
           </Typography>
-          <Typography
-            
-            sx={typoProductStyle}
-            variant="button"
-          >
+          <Typography sx={typoProductStyle} variant="button">
             <CustomeDialogs
               TodoList={TodoList}
               setTodoList={setTodoList}

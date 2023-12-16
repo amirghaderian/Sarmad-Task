@@ -5,12 +5,10 @@ import { useState } from "react";
 const TodoList = () => {
   const [todoList, setTodoList] = useState([1, 2, 3]);
   const [products, setProducts] = useState([]);
-  const handleAddTodo = (todo) => {
-    setTodoList((prevTodoList) => [...prevTodoList, todo]);
-  };
-  const handleAddProduct = (newProducts) => {
-    setProducts((prevState) => [...prevState, newProducts]);
-    localStorage.setItem("products",JSON.stringify(products))
+
+  const handleAddProduct = (newProducts: any) => {
+    setProducts((prevState: never[]) => [...prevState, newProducts]);
+    localStorage.setItem("products", JSON.stringify(products));
   };
 
   return (
@@ -45,7 +43,7 @@ const TodoList = () => {
           </div>
         </Box>
       </Box>
-      <Todo onAddTodo={handleAddTodo} onAddProduct={handleAddProduct} />
+      <Todo onAddProduct={handleAddProduct} />
     </>
   );
 };

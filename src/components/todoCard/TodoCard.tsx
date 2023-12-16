@@ -11,9 +11,9 @@ import {
   toastContainerStyle,
 } from "./todoCardStyle";
 import TodoCardParams from "./todoCard.type";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
-const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCardParams) => {
+const TodoCard = ({ todo, onAddProduct }: TodoCardParams) => {
   return (
     <Card sx={cardStyle}>
       <Badge
@@ -41,7 +41,7 @@ const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCard
             variant="contained"
             disableElevation
             disableRipple
-            onClick={()=>onAddProduct(todo)}
+            onClick={() => onAddProduct(todo)}
             sx={btnAddStyle}
           >
             افزودن

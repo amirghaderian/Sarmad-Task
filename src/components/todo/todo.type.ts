@@ -6,5 +6,6 @@ interface TodoParams {
   price: number;
   rating: { count: number; rate: number };
   title: string;
+ 
 }
 export default TodoParams;

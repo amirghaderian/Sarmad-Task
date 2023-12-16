@@ -1,18 +1,17 @@
 const cardStyle = {
-  width: {xs:"47%",sm:"31.3%",md:"23%"},
+  width: {xs:"47%",sm:"31.3%",md:"43%"},
   pt: "2%",
   mt: 2,
   mx: "1%",
-  boxShadow: "100px",
   position: "relative",
 };
 const boxMediaStyle = {
   height: "80%",
   width: "50%",
-  mx: "auto",
+  mx: "15%",
 };
 const boxActionStyle = { mb: 8 };
-const cardMedoaStyle = { height: "70%" };
+const cardMedoaStyle = { height: "100%",width:"150%"};
 const cardActionsStyle = { display: "flex", justifyContent: "space-between" };
 const btnAddStyle = {
   bgcolor: "#F59794",

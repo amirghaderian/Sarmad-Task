@@ -1,4 +1,4 @@
-interface TodoCardParams {
+interface ShopingCardParams {
   todo: {
     category: string;
     description: string;
@@ -9,6 +9,7 @@ interface TodoCardParams {
     title: string;
   };
   setMyProduct: any;
+  onDelete:any
   myProduct: [];
 }
-export default TodoCardParams;
+export default ShopingCardParams;
