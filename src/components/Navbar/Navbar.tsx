@@ -35,16 +35,12 @@ const Navbar = ({
   setProducts,
 }) => {
   const [darkMode, setDarkMode] = useState(false);
-  const [dialog, setDialog] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("token");
     location.reload();
   };
   const handleMode = () => {
     setDarkMode(!darkMode);
-  };
-  const handleProducts = () => {
-    setDialog(!dialog);
   };
 
   return (
@@ -79,7 +75,7 @@ const Navbar = ({
             </Typography>
           </Typography>
           <Typography
-            onClick={handleProducts}
+            
             sx={typoProductStyle}
             variant="button"
           >

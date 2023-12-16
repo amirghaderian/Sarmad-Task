@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import ShopingCardTodos from "../shopingCardTodos/ShopingCardTodos";
 import { Box } from "@mui/material";
 import { boxContainerStyle, boxItemStyle } from "./dialogStyle";
@@ -34,24 +34,21 @@ const CustomeDialogs = ({
   setProducts,
 }: CustomDialogProps) => {
   const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState();
   const handleClickOpen = () => {
     setOpen(true);
+    // console.log("localStorage :", JSON.parse(localStorage.getItem("products")));
+
     setProducts(JSON.parse(localStorage.getItem("products")));
+    // localStorage.setItem("products", JSON.stringify(products));
   };
+
   const notifySuccess = (proccess: string) => toast.success(proccess);
   const handleDelete = (id) => {
     notifySuccess("حذف موفق");
     const filterProduct = products.filter((p) => p.id !== id);
-    if (!filter) {
-      setFilter(filterProduct);
-      localStorage.setItem("products", JSON.stringify(filterProduct));
-    } else {
-      const filterdLast = filter.filter((p) => p.id !== id);
-      setFilter(filterdLast);
-      localStorage.setItem("products", JSON.stringify(filterdLast));
-    }
-    console.log(filterProduct);
+    setProducts(filterProduct)
+    localStorage.setItem("products", JSON.stringify(filterProduct));
+    localStorage.setItem("filterData", JSON.stringify(filterProduct));
   };
   const handleClose = () => {
     setOpen(false);

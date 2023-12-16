@@ -14,13 +14,6 @@ import TodoCardParams from "./todoCard.type";
 import { ToastContainer, toast } from "react-toastify";
 
 const TodoCard = ({ todo,setMyProductList,myProductList ,onAddProduct}: TodoCardParams) => {
-  const notifySuccess = (proccess: string) => toast.success(proccess);
-  const handleAddProduct = () => {
-    notifySuccess("با موفقیت به سبدتان افزوده شد");
-    const newProduct= onAddProduct(todo);
-    setMyProductList((prev)=>[...prev,newProduct])
-
-  };
   return (
     <Card sx={cardStyle}>
       <Badge
