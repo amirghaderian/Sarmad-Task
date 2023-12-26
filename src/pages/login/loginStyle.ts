@@ -5,8 +5,8 @@ const paperStyle: CSSProperties = {
   justifyContent: "center",
   flexDirection: "column",
   padding: 5,
-  height: "50vh",
-  width: 280,
+  height: "65vh",
+  width: "65vh",
   margin: "100px auto",
 };
 const gridSyle: CSSProperties = {
@@ -21,7 +21,9 @@ const inputAdornmentStyle = {
     cursor: "default",
   },
 };
-const avatarStyle: CSSProperties = { backgroundImage: " linear-gradient(to bottom right, blue, white,red)" };
+const avatarStyle: CSSProperties = {
+  backgroundImage: " linear-gradient(to bottom right, blue, white,red)",
+};
 const gridContainerStyle: CSSProperties = { direction: "rtl" };
 
 const btnStyle: CSSProperties = { margin: "20px 0" };

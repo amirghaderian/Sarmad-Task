@@ -3,6 +3,7 @@ import { CSSProperties } from "react";
 const appbarStyle = {
   flexGrow: 1,
   borderRadius: 3,
+  backgroundColor: "white",
   color: "#11181C",
 };
 const toolbarStyle = {

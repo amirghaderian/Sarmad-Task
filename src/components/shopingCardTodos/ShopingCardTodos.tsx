@@ -12,10 +12,7 @@ import {
 import ShopingCardParams from "./shopingCardTodos.type";
 import { ToastContainer } from "react-toastify";
 
-const ShopingCardTodos = ({
-  todo,
-  onDelete,
-}: ShopingCardParams) => {
+const ShopingCardTodos = ({ todo, onDelete }: ShopingCardParams) => {
   return (
     <Card sx={cardStyle}>
       <Badge
@@ -25,6 +22,8 @@ const ShopingCardTodos = ({
           fontSize: "17px",
           fontWeight: "bold",
           color: "#23254E",
+          bgcolor:"whitesmoke",
+          borderRadius:3,
         }}
       >
         {`${todo.price}$`}

@@ -24,19 +24,23 @@ import {
   toolbarStyle,
   typoAvatarStyle,
   typoProductStyle,
-} from "./navbarStyle";
-import { useState } from "react";
+} from "./navbarStyles";
+import { changeTheme } from "../../redux/Store";
+import { useDispatch, useSelector } from "react-redux";
 import { CustomeDialogs } from "..";
-const Navbar = ({ TodoList, setTodoList, products, setProducts }: any) => {
-  const [darkMode, setDarkMode] = useState(false);
+interface ThemState {
+  theme: { darkmode: boolean };
+}
+const Navbar = () => {
+  const dispatch = useDispatch();
+  const selector = useSelector((state: ThemState) => state.theme.darkmode);
   const handleLogout = () => {
     localStorage.removeItem("token");
     location.reload();
   };
   const handleMode = () => {
-    setDarkMode(!darkMode);
+    dispatch(changeTheme());
   };
-
   return (
     <Box>
       <AppBar position="static" sx={appbarStyle}>
@@ -60,7 +64,7 @@ const Navbar = ({ TodoList, setTodoList, products, setProducts }: any) => {
             </Typography>
             <Typography variant="h6" component="div" onClick={handleMode}>
               <Avatar sx={avatarModeStyle}>
-                {darkMode ? (
+                {selector ? (
                   <LightMode sx={modeStyle} />
                 ) : (
                   <Nightlight sx={modeStyle} />
@@ -69,12 +73,7 @@ const Navbar = ({ TodoList, setTodoList, products, setProducts }: any) => {
             </Typography>
           </Typography>
           <Typography sx={typoProductStyle} variant="button">
-            <CustomeDialogs
-              TodoList={TodoList}
-              setTodoList={setTodoList}
-              products={products}
-              setProducts={setProducts}
-            >
+            <CustomeDialogs>
               <span style={spanStyle}>سبد من</span>
               <Product sx={productIconStyle} />
             </CustomeDialogs>

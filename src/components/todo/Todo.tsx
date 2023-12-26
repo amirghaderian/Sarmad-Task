@@ -7,7 +7,11 @@ import { toast } from "react-toastify";
 import TodoParams from "./todo.type";
 const Todo = () => {
   const [todoList, setTodoList] = useState([]);
-  const [myProductList, setMyProductList] = useState([]);
+  const [myProductList, setMyProductList] = useState(
+    localStorage.getItem("products") == null
+      ? []
+      : JSON.parse(localStorage.getItem("products")!)
+  );
   const notifySuccess = (proccess: string) => toast.success(proccess);
   useEffect(() => {
     localStorage.setItem("products", JSON.stringify(myProductList));
@@ -22,13 +26,13 @@ const Todo = () => {
   };
   const handleAddProduct = (product: TodoParams) => {
     notifySuccess("با موفقیت به سبدتان افزوده شد");
-    const filterData = localStorage.getItem("filterData");
+    const filterData = localStorage.getItem("products");
     const filter = filterData ? JSON.parse(filterData) : [];
     if (filterData) {
       setMyProductList(filter);
-      localStorage.removeItem("filterData");
+      localStorage.removeItem("products");
     }
-    setMyProductList((pre) => [...pre, product]);
+    setMyProductList((pre: any) => [...pre, product]);
   };
 
   useEffect(() => {
@@ -39,13 +43,7 @@ const Todo = () => {
     <Box sx={boxContainerStyle}>
       <Box sx={boxItemStyle}>
         {todoList.map((todo: TodoParams) => (
-          <TodoCard
-            onAddProduct={handleAddProduct}
-            myProductList={myProductList}
-            todo={todo}
-            key={todo.id}
-            onDelete={undefined}
-          />
+          <TodoCard onAddProduct={handleAddProduct} todo={todo} key={todo.id} />
         ))}
       </Box>
     </Box>

@@ -22,6 +22,8 @@ const TodoCard = ({ todo, onAddProduct }: TodoCardParams) => {
           left: 7,
           fontSize: "17px",
           fontWeight: "bold",
+          bgcolor:"whitesmoke",
+          borderRadius:3,
           color: "#23254E",
         }}
       >

@@ -9,7 +9,5 @@ interface TodoCardParams {
     title: string;
   };
   onAddProduct: any;
-  onDelete: any;
-  myProductList: any;
 }
 export default TodoCardParams;

@@ -8,8 +8,6 @@ interface ShopingCardParams {
     rating: { count: number; rate: number };
     title: string;
   };
-  setMyProduct: any;
-  onDelete:any
-  myProduct: [];
+  onDelete: any;
 }
 export default ShopingCardParams;

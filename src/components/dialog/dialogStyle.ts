@@ -4,13 +4,14 @@ const boxContainerStyle = {
   justifyContent: "center",
   width: "100%",
   mx: "auto",
-  mt: 3,
- 
+  height: "60%",
+  mt: 1,
 };
 const boxItemStyle = {
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "center", scrollbar: "hidden"
+  justifyContent: "center",
+  scrollbar: "hidden",
 };
 
 export { boxContainerStyle, boxItemStyle };

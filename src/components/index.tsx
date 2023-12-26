@@ -1,4 +1,4 @@
-import Navbar from "./navbar/Navbar";
+import Navbar from "./Navbar/Navbar";
 import Todo from "./todo/Todo";
 import TodoCard from "./todoCard/TodoCard";
 import Dialog from "./dialog/Dialog";

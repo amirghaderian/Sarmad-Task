@@ -7,7 +7,7 @@ import { useState } from "react";
 import ShopingCardTodos from "../shopingCardTodos/ShopingCardTodos";
 import { boxContainerStyle, boxItemStyle } from "./dialogStyle";
 import { toast } from "react-toastify";
-import CustomDialogProps from "./dialog.type";
+import { CustomDialogProps, ProductParams } from "./dialog.type";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -18,12 +18,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const CustomeDialogs = ({
-  children,
-  products,
-  setProducts,
-}: CustomDialogProps) => {
+const CustomeDialogs = ({ children }: CustomDialogProps) => {
   const [open, setOpen] = useState(false);
+  const [products, setProducts] = useState([]);
   const handleClickOpen = () => {
     setOpen(true);
     const storedProducts = localStorage.getItem("products");
@@ -31,12 +28,11 @@ const CustomeDialogs = ({
   };
 
   const notifySuccess = (proccess: string) => toast.success(proccess);
-  const handleDelete = (id: any) => {
+  const handleDelete = (id: number) => {
     notifySuccess("حذف موفق");
-    const filterProduct = products.filter((p: { id: any }) => p.id !== id);
+    const filterProduct = products.filter((p: { id: number }) => p.id !== id);
     setProducts(filterProduct);
     localStorage.setItem("products", JSON.stringify(filterProduct));
-    localStorage.setItem("filterData", JSON.stringify(filterProduct));
   };
   const handleClose = () => {
     setOpen(false);
@@ -86,7 +82,7 @@ const CustomeDialogs = ({
               >
                 <Button
                   disableRipple
-                  style={{ backgroundColor: "rgb(100,255,100)" }}
+                  style={{ backgroundColor: "whitesmoke", fontSize: "large",padding:0,margin:0 }}
                 >
                   {"$" + totalPrice}
                 </Button>
@@ -97,34 +93,23 @@ const CustomeDialogs = ({
             ) : (
               <Box sx={boxContainerStyle}>
                 <Box sx={boxItemStyle}>
-                  {products.map(
-                    (product: {
-                      id: any;
-                      category?: string;
-                      description?: string;
-                      image?: string;
-                      price?: number;
-                      rating?: { count: number; rate: number };
-                      title?: string;
-                    }) => {
-                      return (
-                        <ShopingCardTodos
-                          key={product.id}
-                          todo={{
-                            ...product,
-                            category: product.category!,
-                            description: product.description!,
-                            image: product.image!,
-                            price: product.price!,
-                            rating: product.rating!,
-                            title: product.title!,
-                          }}
-                          setMyProduct={setProducts}
-                          onDelete={handleDelete}
-                        />
-                      );
-                    }
-                  )}
+                  {products.map((product: ProductParams) => {
+                    return (
+                      <ShopingCardTodos
+                        key={product.id}
+                        todo={{
+                          ...product,
+                          category: product.category!,
+                          description: product.description!,
+                          image: product.image!,
+                          price: product.price!,
+                          rating: product.rating!,
+                          title: product.title!,
+                        }}
+                        onDelete={handleDelete}
+                      />
+                    );
+                  })}
                 </Box>
               </Box>
             )}
